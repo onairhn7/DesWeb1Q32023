@@ -1,0 +1,6 @@
+Sesión 2 Semana 
+
+1) Conocer que es un servidor 
+2) Conocer Node JS
+3) Conocer NPM
+4) Crear nuestro primer servidor en Node Js
