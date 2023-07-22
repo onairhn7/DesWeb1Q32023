@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/frlopez88/DesWeb1Q32023/issues"
   },
-  "homepage": "https://github.com/frlopez88/DesWeb1Q32023#readme"
+  "homepage": "https://github.com/frlopez88/DesWeb1Q32023#readme",
+  "dependencies": {
+    "upper-case": "^2.0.2"
+  }
 }

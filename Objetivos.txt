@@ -1,5 +1,12 @@
-Sesión 2 Semana 
+Sesión 2 Semana 1
 
 1) Conocer que es un servidor 
 2) Conocer Node JS
 3) Crear nuestro primer servidor en Node Js
+
+Sesión 3 Semana 1
+
+1) NPM
+2) Instalar Librerias de NPM
+3) Definicion de Parametros:
+    a) Curly Parameters
