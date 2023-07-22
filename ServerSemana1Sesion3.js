@@ -50,7 +50,7 @@ http.createServer( (req,res)=>{
     let resultado = 0;
 
     console.log( "pathname : "+ dataUrl.pathname);
-    console.log( "path : " +dataUrl.path);
+    console.log( "path : " + dataUrl.path);
 
     switch (dataUrl.pathname){
 
