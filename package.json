@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/frlopez88/DesWeb1Q32023#readme",
   "dependencies": {
+    "express": "^4.18.2",
     "upper-case": "^2.0.2"
   }
 }

@@ -10,3 +10,15 @@ Sesión 3 Semana 1
 2) Instalar Librerias de NPM
 3) Definicion de Parametros:
     a) Curly Parameters
+
+
+Sesión 1 Semana 2 
+
+1) Repaso de lo aprendido 
+2) Retornar información en Json 
+    a) Express 
+        Ruteo 
+        Retorno de Datos 
+        Consumo de Datos 
+3) Ejercicios de Clase 
+

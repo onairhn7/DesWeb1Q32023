@@ -52,6 +52,15 @@ http.createServer( (req,res)=>{
     console.log( "pathname : "+ dataUrl.pathname);
     console.log( "path : " + dataUrl.path);
 
+    let respuesta = {
+
+        num1 :  datoParametros.num1, 
+        num2 : datoParametros.num2, 
+        operacion : dataUrl.pathname, 
+        res : 0
+
+    };
+
     switch (dataUrl.pathname){
 
         case "/suma":
@@ -70,7 +79,9 @@ http.createServer( (req,res)=>{
             break;
 
     }
+
+    respuesta.res  = resultado;
     
-    res.end(resultado.toString());
+    res.end(JSON.stringify(respuesta));
 
 }).listen(3000);
