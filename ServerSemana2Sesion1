@@ -1,0 +1,33 @@
+const express = requiere ('express');
+
+const app = express();
+
+
+app.use(express.json());
+
+
+let arreglo = new Array();
+
+
+// imaginar una api de animalitos 
+//post crear animales 
+// put actualizar animales 
+//get retonar animales
+// delete borrar animales
+
+app.post('/api/animales', (req,res)=>{
+
+    let tmpanimal = {
+         nombre: req.body.nombre,
+         sonido: req.body.sonido,
+    }
+
+    arreglo.push(tmpanimal);
+    console.log(JSON.stringify(arreglo));
+
+    res.json(tmpanimal);
+
+
+});
+
+app.listen(3000);
