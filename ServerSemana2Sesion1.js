@@ -56,7 +56,7 @@ app.post('/api/persona', (req, res) => {
 app.get('/api/persona', (req, res) => {
 
 
-    let sql = "select * from tbl_persona";
+    let sql = "select * from tbl_persona where activo = true";
 
 
     db.any(sql, e => e.id)
@@ -107,5 +107,30 @@ app.put('/api/persona/:id', (req, res) => {
 
 
 });
+
+app.delete('/api/persona/:id', (req, res) => {
+
+
+    let sql = ` update tbl_persona 
+                set activo = false , 
+                    fecha_borrar = current_timestamp 
+                where id = $1 `;
+
+    db.result(sql, [req.params.id] ,   r => r.rowCount)
+        .then(data => {
+
+            const objetoBorrado     = {  id : req.params.id, 
+                                        activo : false   };
+            
+            res.json(objetoBorrado);
+
+        })
+        .catch((error) => {
+            res.json(error);
+        });
+
+
+});
+
 
 app.listen(3000);
