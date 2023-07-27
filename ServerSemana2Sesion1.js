@@ -4,7 +4,7 @@ const db = require('./db/conn');
 
 app.use(express.json());
 
-var arreglo = new Array();
+
 
 // Imaginar un api de Animalitos 
 
@@ -14,40 +14,11 @@ var arreglo = new Array();
 // delete (borrar animales)
 
 
-app.post('/api/animales', (req, res)=>{
+app.post('/api/persona', (req, res) => {
 
+    let datos = [
 
-    let tmpAnimal = {
-
-        nombre : req.body.nombre, 
-        sonido : req.body.sonido
-
-    };
-
-
-    arreglo.push(tmpAnimal);
-    console.log( JSON.stringify(arreglo) );
-
-    res.json(tmpAnimal);
-
-});
-
-app.get('/api/animales', (req, res)=>{
-
-
-
-    res.json(arreglo);
-
-
-
-});
-
-
-app.post('/api/persona', (req, res)=>{
-
-    let datos = [ 
-
-        req.body.nombre, 
+        req.body.nombre,
         req.body.apodo
 
     ];
@@ -58,50 +29,83 @@ app.post('/api/persona', (req, res)=>{
                 ($1, $2) returning id 
                 `;
 
-    db.one(sql,datos, event => event.id)
-    .then ( data =>{
+    db.one(sql, datos, event => event.id)
+        .then(data => {
 
-        const objetoCreado = {  
+            const objetoCreado = {
 
-            id : data, 
-            nombre : datos[0], 
-            apodo : datos[1]
+                id: data,
+                nombre: datos[0],
+                apodo: datos[1]
 
-        }
+            }
 
-        res.json(objetoCreado);
+            res.json(objetoCreado);
 
-    })
-    .catch ( (error) =>{
+        })
+        .catch((error) => {
 
-        res.json(error);
+            res.json(error);
 
-    });
-    
+        });
+
 
 
 });
 
-app.get('/api/persona', (req, res)=>{
+app.get('/api/persona', (req, res) => {
 
 
     let sql = "select * from tbl_persona";
 
 
-    db.any( sql , e => e.id )
-    .then ( rows =>{
+    db.any(sql, e => e.id)
+        .then(rows => {
 
-        res.json(rows);
-    
-    } )
-    .catch ( (error)=>{
+            res.json(rows);
 
-        res.json(error);
+        })
+        .catch((error) => {
 
-    });
+            res.json(error);
+
+        });
 
 
 });
 
+
+app.put('/api/persona/:id', (req, res) => {
+
+
+    const parametros = [
+
+        req.body.nombre,
+        req.body.apodo,
+        req.params.id
+
+    ];
+
+    let sql = ` update tbl_persona 
+                set nombre =  $1, 
+                    apodo = $2
+                where id = $3 `;
+
+    db.result(sql, parametros, r => r.rowCount)
+        .then(data => {
+
+            const objetoModificado = {  id : req.params.id, 
+                                        nombre : req.body.nombre, 
+                                        apodo : req.body.apodo  };
+            
+            res.json(objetoModificado);
+
+        })
+        .catch((error) => {
+            res.json(error);
+        });
+
+
+});
 
 app.listen(3000);
